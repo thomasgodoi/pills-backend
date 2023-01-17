@@ -38,20 +38,17 @@ public class Perk {
 	
 	@Column(name = "times_lost")
 	private Long timesLost;
-	
-//	public Perk(Long id, String description, Boolean isPositive, String additionalInfo, 
-//			String tier, Long timesWon, Long timesLost) {
-//		this.id = id;
-//		this.description = description;
-//		this.isPositive = isPositive;
-//		this.additionalInfo = additionalInfo;
-//		this.tier = tier;
-//		this.timesWon = timesWon;
-//		this.timesLost = timesLost;
-//	}
-//	
+
 	public Perk(Long id) {
 		this.id = id;
+	}
+	
+	public Perk(Long id, String description, Boolean isPositive, String additionalInfo, String tier) {
+		this.id = id;
+		this.description = description;
+		this.isPositive = isPositive;
+		this.tier = tier;
+		this.additionalInfo = additionalInfo;
 	}
 	
 }
