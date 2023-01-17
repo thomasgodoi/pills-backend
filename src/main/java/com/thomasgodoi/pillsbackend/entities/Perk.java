@@ -38,7 +38,12 @@ public class Perk {
 	
 	@Column(name = "times_lost")
 	private Long timesLost;
-
+	
+	@Column(name = "recent_performance")
+	private Long recentPerformance;
+	
+	
+	
 	public Perk(Long id) {
 		this.id = id;
 	}

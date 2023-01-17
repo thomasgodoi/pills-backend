@@ -1,7 +1,6 @@
 package com.thomasgodoi.pillsbackend.repositories;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +24,4 @@ public interface PerkRepository extends JpaRepository<Perk, Long>{
 			+ " WHERE p.isPositive = FALSE"
 			+ " ORDER BY random()")
 	public Page<Perk> findRandomNegativePerks(Pageable pageable);
-
-	public void save(Optional<Perk> perk);	
 }
