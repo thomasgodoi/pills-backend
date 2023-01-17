@@ -125,5 +125,21 @@ public class PerkService {
 		
 		perkRepository.saveAll(perksToSave);
 	}
+
+	public List<Perk> findPerks() {
+			Page<Perk> positives = findRandomPositivePerks(0, 3);
+			Page<Perk> negatives = findRandomNegativePerks(0, 1);
+			List<Perk> perksToSend = new ArrayList<>();
+			
+			for(Perk perk : positives) {
+				perksToSend.add(perk); 
+			}
+			
+			for(Perk perk : negatives) {
+				perksToSend.add(perk); 
+			}
+			
+		return perksToSend;
+	}
 	
 }

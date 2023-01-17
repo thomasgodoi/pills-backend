@@ -31,8 +31,8 @@ public class PerkController {
 			List<Perk> response = perkService.getAllPerks();
 			return response;
 		} catch(Error error) {
-			System.out.println("--- Error in /api/find-all ---");
 			System.out.println(error);
+			System.out.println("--- /perks/find-all ---");
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to retrieve perks :(");
 		}
 	}
@@ -40,14 +40,14 @@ public class PerkController {
 	@GetMapping("/positives")
 	public Page<Perk> getRandomPositivePerks(
 			@RequestParam(defaultValue = "0") Integer pageNo, 
-            @RequestParam(defaultValue = "6") Integer pageSize) {
+            @RequestParam(defaultValue = "3") Integer pageSize) {
 		
 		try {
 			Page<Perk> response = perkService.findRandomPositivePerks(pageNo, pageSize);
 			return response;	
 		} catch (Error error) {
-			System.out.println("--- Error in /api/positive-perks ---");
 			System.out.println(error);
+			System.out.println("--- /perks/positive-perks ---");
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to retrieve positive perks :(");
 		}
 	}
@@ -55,14 +55,14 @@ public class PerkController {
 	@GetMapping("/negatives")
 	public Page<Perk> getRandomNegativePerks(
 			@RequestParam(defaultValue = "0") Integer pageNo, 
-            @RequestParam(defaultValue = "2") Integer pageSize) {
+            @RequestParam(defaultValue = "1") Integer pageSize) {
 		
 		try {
 			Page<Perk> response = perkService.findRandomNegativePerks(pageNo, pageSize);
 			return response;	
 		} catch (Error error) {
-			System.out.println("--- Error in /api/negative-perks ---");
 			System.out.println(error);
+			System.out.println("--- /perks/negative-perks ---");
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to retrieve negative perks :(");
 		}
 	}
@@ -74,8 +74,8 @@ public class PerkController {
 			response = perkService.findPerkById(id);
 			return response;
 		} catch (Exception error) {
-			System.out.println("--- Error in /api/by-id/{id} ---");
 			System.out.println(error);
+			System.out.println("--- /perks/by-id/{id} ---");
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to retrieve this perk :(");
 		}
 	}
@@ -85,8 +85,20 @@ public class PerkController {
 		try {
 			perkService.addPerksScore(perkIdList, isWinner);
 		} catch (Exception error) {
-			System.out.println("--- Error in /api/add-score/{perkIdList}/{isWinner} ---");
 			System.out.println(error);
+			System.out.println("--- /perks/add-score/{perkIdList}/{isWinner} ---");
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to score perks wins/losses :(");
+		}
+	}
+	
+	@GetMapping("/find-perks")
+	public List<Perk> findPerks() {	
+		try {
+			List<Perk> response = perkService.findPerks();
+			return response;
+		} catch (Exception error) {
+			System.out.println(error);
+			System.out.println("--- /perks/find-perks ---");
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to score perks wins/losses :(");
 		}
 	}
