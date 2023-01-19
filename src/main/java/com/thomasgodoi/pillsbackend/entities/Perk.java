@@ -48,12 +48,14 @@ public class Perk {
 		this.id = id;
 	}
 	
-	public Perk(Long id, String description, Boolean isPositive, String additionalInfo, String tier) {
+	public Perk(Long id, String description, Boolean isPositive, String additionalInfo, String tier, Long timesWon, Long timesLost) {
 		this.id = id;
 		this.description = description;
 		this.isPositive = isPositive;
 		this.tier = tier;
 		this.additionalInfo = additionalInfo;
+		this.timesWon = timesWon;
+		this.timesLost = timesLost;
 	}
 	
 }

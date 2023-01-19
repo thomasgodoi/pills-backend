@@ -34,7 +34,7 @@ VALUES
 	('Die older than 100 years old, if you want', TRUE, NULL, 0, 0, 0),
 	('Talk to God, or discover if there is one', TRUE, NULL, 0, 0, 0),
 	('You can now talk with your pets', TRUE, NULL, 0, 0, 0),
-	('Your child will earn a Nobel at 90 years old', TRUE, NULL, 0, 0, 0),
+	('Your child will earn a Nobel at 90 years old', TRUE, 'You obviously won''t witness it', 0, 0, 0),
 	('Win an small-sized house/apartment', TRUE, NULL, 0, 0, 0),
 	('Have a 50% discount on any car you want', TRUE, NULL, 0, 0, 0),
 	('Drug effects last longer and do no harm to your body', TRUE, NULL, 0, 0, 0),
