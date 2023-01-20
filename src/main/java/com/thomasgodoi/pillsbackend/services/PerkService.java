@@ -141,5 +141,20 @@ public class PerkService {
 			
 		return perksToSend;
 	}
+
+	public Perk findPerkWithMostWins() {
+		Perk response = perkRepository.findTopByOrderByTimesWonDesc();
+		return response;
+	}
+	
+	public Perk findPerkWithMostLosses() {
+		Perk response = perkRepository.findTopByOrderByTimesLostDesc();
+		return response;
+	}
+
+	public Perk findPerkWithHotStreak() {
+		Perk response = perkRepository.findTopByOrderByRecentPerformanceDesc();
+		return response;
+	}
 	
 }

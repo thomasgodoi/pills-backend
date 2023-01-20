@@ -32,8 +32,7 @@ public class PerkController {
 			return response;
 		} catch(Error error) {
 			System.out.println(error);
-			System.out.println("--- /perks/find-all ---");
-			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to retrieve perks :(");
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
@@ -47,8 +46,7 @@ public class PerkController {
 			return response;	
 		} catch (Error error) {
 			System.out.println(error);
-			System.out.println("--- /perks/positive-perks ---");
-			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to retrieve positive perks :(");
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -62,8 +60,7 @@ public class PerkController {
 			return response;	
 		} catch (Error error) {
 			System.out.println(error);
-			System.out.println("--- /perks/negative-perks ---");
-			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to retrieve negative perks :(");
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -75,8 +72,7 @@ public class PerkController {
 			return response;
 		} catch (Exception error) {
 			System.out.println(error);
-			System.out.println("--- /perks/by-id/{id} ---");
-			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to retrieve this perk :(");
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -86,8 +82,7 @@ public class PerkController {
 			perkService.addPerksScore(perkIdList, isWinner);
 		} catch (Exception error) {
 			System.out.println(error);
-			System.out.println("--- /perks/add-score/{perkIdList}/{isWinner} ---");
-			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to score perks wins/losses :(");
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -98,8 +93,40 @@ public class PerkController {
 			return response;
 		} catch (Exception error) {
 			System.out.println(error);
-			System.out.println("--- /perks/find-perks ---");
-			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "It just wasn't possible to score perks wins/losses :(");
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/find-most-wins")
+	public Perk findPerkWithMostWins() {	
+		try {
+			Perk response = perkService.findPerkWithMostWins();
+			return response;
+		} catch (Exception error) {
+			System.out.println(error);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/find-most-losses")
+	public Perk findPerkWithMostLosses() {	
+		try {
+			Perk response = perkService.findPerkWithMostLosses();
+			return response;
+		} catch (Exception error) {
+			System.out.println(error);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/find-hot-streak")
+	public Perk findPerkHotStreak() {	
+		try {
+			Perk response = perkService.findPerkWithHotStreak();
+			return response;
+		} catch (Exception error) {
+			System.out.println(error);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 		

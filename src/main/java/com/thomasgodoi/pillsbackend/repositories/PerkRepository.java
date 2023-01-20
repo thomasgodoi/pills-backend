@@ -14,7 +14,6 @@ public interface PerkRepository extends JpaRepository<Perk, Long>{
 	@Query("SELECT new com.thomasgodoi.pillsbackend.entities.Perk(p.id)FROM Perk p")
 	public List<Perk> findAllTeste();
 
-	
 	@Query("SELECT new com.thomasgodoi.pillsbackend.entities.Perk(p.id, p.description, p.isPositive, p.additionalInfo, p.tier, p.timesWon, p.timesLost) FROM Perk p"
 			+ " WHERE p.isPositive = TRUE"
 			+ " ORDER BY random()")
@@ -24,4 +23,11 @@ public interface PerkRepository extends JpaRepository<Perk, Long>{
 			+ " WHERE p.isPositive = FALSE"
 			+ " ORDER BY random()")
 	public Page<Perk> findRandomNegativePerks(Pageable pageable);
+
+	public Perk findTopByOrderByTimesWonDesc();
+	
+	public Perk findTopByOrderByTimesLostDesc();
+
+	public Perk findTopByOrderByRecentPerformanceDesc();
+
 }
